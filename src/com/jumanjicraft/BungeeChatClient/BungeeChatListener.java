@@ -42,10 +42,11 @@ public class BungeeChatListener implements PluginMessageListener {
         	Channel channel = Herochat.getChannelManager().getChannel(chatchannel);
         	if (channel == null)
         	{
-        		Bukkit.getLogger().warning("Channel "+chatchannel+" doesn't exist, but a message was receieved on it. Your Herochat configs aren't probably the same on each server.");
+        		//Bukkit.getLogger().warning("Channel "+chatchannel+" doesn't exist, but a message was receieved on it. Your Herochat configs aren't probably the same on each server.");
 				return;
         	} 
-        	channel.sendRawMessage(ChatColor.GREEN+"["+server+"]"+ChatColor.RESET+channel.applyFormat(channel.getFormatSupplier().getAnnounceFormat(), "").replace("%2$s", message.replaceAll("(?i)&([a-fklmno0-9])", "\247$1")));
+        	//channel.sendRawMessage(ChatColor.GREEN+"["+server+"]"+ChatColor.RESET+channel.applyFormat(channel.getFormatSupplier().getAnnounceFormat(), "").replace("%2$s", message.replaceAll("(?i)&([a-fklmno0-9])", "\247$1")));
+        	channel.sendRawMessage(message);
         }
         
 }
