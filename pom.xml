@@ -11,6 +11,7 @@
     </properties>
     
     <version>0.4-${build.number}</version>
+    <url>http://www.spigotmc.org/resources/herochatbungeebridge-bukkit.188/</url>
     
     <build>
         <!-- Filter only plugin.yml -->

@@ -1,6 +1,7 @@
 name: BungeeChatClient
 version: ${project.version}
 author: KoolKrafter
+website: ${project.url}
 main: com.jumanjicraft.BungeeChatClient.BungeeChatClient
 depend: [Herochat]
 permissions:
