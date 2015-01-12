@@ -15,6 +15,6 @@ public class BungeeListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onChannelChatEvent(ChannelChatEvent event) {
-        plugin.bungeeChatListener.TransmitChatMessage(event.getMessage(), event.getChannel().getName(), event.getChatter().getName());
+        plugin.getBungeeChatListener().TransmitChatMessage(event.getMessage(), event.getChannel().getName(), event.getChatter().getName());
     }
 }

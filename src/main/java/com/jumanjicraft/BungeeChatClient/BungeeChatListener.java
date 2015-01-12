@@ -38,10 +38,10 @@ public class BungeeChatListener implements PluginMessageListener {
         if (channel == null) {
             return;
         }
-        if (plugin.symbol.equals("")) {
+        if (plugin.getPrefixSymbol().isEmpty()) {
             channel.sendRawMessage(message);
         } else {
-            channel.sendRawMessage(plugin.symbol + message);
+            channel.sendRawMessage(plugin.getPrefixSymbol() + message);
         }
     }
 }

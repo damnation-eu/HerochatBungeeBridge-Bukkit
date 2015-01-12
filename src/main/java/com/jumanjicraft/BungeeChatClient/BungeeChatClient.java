@@ -4,8 +4,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BungeeChatClient extends JavaPlugin {
 
-    protected String symbol;
-    protected BungeeChatListener bungeeChatListener;
+    private String prefixSymbol;
+    private BungeeChatListener bungeeChatListener;
 
     @Override
     public void onEnable() {
@@ -15,6 +15,14 @@ public class BungeeChatClient extends JavaPlugin {
     }
 
     public void loadConfig() {
-        this.symbol = getConfig().getString("prefix-symbol", "");
+        this.prefixSymbol = getConfig().getString("prefix-symbol", "");
+    }
+    
+    public String getPrefixSymbol() {
+        return prefixSymbol;
+    }
+    
+    public BungeeChatListener getBungeeChatListener() {
+        return bungeeChatListener;
     }
 }
