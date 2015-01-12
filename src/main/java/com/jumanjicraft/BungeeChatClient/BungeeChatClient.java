@@ -1,6 +1,5 @@
 package com.jumanjicraft.BungeeChatClient;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class BungeeChatClient extends JavaPlugin {
@@ -12,7 +11,7 @@ public class BungeeChatClient extends JavaPlugin {
     public void onEnable() {
         loadConfig();
         bungeeChatListener = new BungeeChatListener(this);
-        Bukkit.getPluginManager().registerEvents(new BungeeListener(this), this);
+        getServer().getPluginManager().registerEvents(new BungeeListener(this), this);
     }
 
     public void loadConfig() {
