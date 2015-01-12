@@ -1,0 +1,12 @@
+name: BungeeChatClient
+version: ${project.version}
+author: KoolKrafter
+main: com.jumanjicraft.BungeeChatClient.BungeeChatClient
+depend: [Herochat]
+permissions:
+  BungeeChat.nickname:
+    description: Able to set your own nickname.
+    default: op
+  BungeeChat.nickname.others:
+    description: Able to set an other person's nickname.
+    default: op
