@@ -2,7 +2,16 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>HerochatBungeeBridge-Bukkit</groupId>
     <artifactId>HerochatBungeeBridge-Bukkit</artifactId>
-    <version>0.4</version>
+        
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <!-- Bukkit API Version, change if out dated -->
+        <bukkit.version>1.7.9-R0.2</bukkit.version>
+        <build.number>SNAPSHOT</build.number>
+    </properties>
+    
+    <version>0.3.${build.number}</version>
+    
     <build>
         <!-- Filter only plugin.yml -->
         <resources>
@@ -53,7 +62,7 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.7.9-R0.2</version>
+            <version>${bukkit.version}</version>
         </dependency>
         
         <!-- Herochat -->
