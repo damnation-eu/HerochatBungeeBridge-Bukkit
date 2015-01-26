@@ -1,10 +1,10 @@
 package com.jumanjicraft.BungeeChatClient;
 
+import com.dthielke.herochat.Channel;
+import com.dthielke.herochat.Herochat;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
-import com.herochat.Herochat;
-import com.herochat.api.Channel;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 
@@ -33,7 +33,7 @@ public class BungeeChatListener implements PluginMessageListener {
         out.writeUTF(chatchannel);
         out.writeUTF(message);
         out.writeUTF(player);
-        this.plugin.getServer().getOnlinePlayers()[0].sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
+        this.plugin.getServer().sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
     }
     
     /**
@@ -51,7 +51,7 @@ public class BungeeChatListener implements PluginMessageListener {
         out.writeUTF(player);
         out.writeUTF(hColor);
         out.writeUTF(hNick);
-        this.plugin.getServer().getOnlinePlayers()[0].sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
+        this.plugin.getServer().sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
     }
 
     /**
