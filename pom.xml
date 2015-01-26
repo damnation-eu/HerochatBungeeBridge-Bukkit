@@ -49,10 +49,12 @@
             <url>http://repo.bukkit.org/content/groups/public/</url>
         </repository>
         
+        <!--
         <repository>
             <id>Herochat</id>
             <url>http://nexus.theyeticave.net/content/groups/public</url>
         </repository>
+        -->
 
         <repository>
             <id>cnaude-repo</id>
@@ -80,9 +82,10 @@
         
         <!-- Herochat -->
         <dependency>
-            <groupId>com.herochat</groupId>
+            <groupId>com.cnaude.herochat</groupId>
             <artifactId>Herochat</artifactId>
             <version>5.6.7</version>
+            <!--
             <exclusions>
                 <exclusion>
                     <groupId>org.bukkit</groupId>
@@ -93,6 +96,7 @@
                     <artifactId>VaultAPI</artifactId>
                 </exclusion>
             </exclusions>
+            -->
         </dependency>
         
         <!-- Vault -->
