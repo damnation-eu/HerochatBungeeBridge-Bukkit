@@ -18,40 +18,36 @@ public class BungeeChatListener implements PluginMessageListener {
      */
     public BungeeChatListener(BungeeChatClient plugin) {
         this.plugin = plugin;
-        this.plugin.getServer().getMessenger().registerIncomingPluginChannel(plugin, "BungeeChat", this);
-        this.plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, "BungeeChat");
+        register();
     }
-
-    /**
-     *
-     * @param message
-     * @param chatchannel
-     * @param player
-     */
-    public void TransmitChatMessage(String message, String chatchannel, String player) {
-        ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF(chatchannel);
-        out.writeUTF(message);
-        out.writeUTF(player);
-        this.plugin.getServer().sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
-    }
+    
+    private void register() {
+        plugin.getServer().getMessenger().registerIncomingPluginChannel(plugin, "BungeeChat", this);
+        plugin.getServer().getMessenger().registerOutgoingPluginChannel(plugin, "BungeeChat");
+    }    
     
     /**
      *
-     * @param message
-     * @param chatchannel
-     * @param player
-     * @param hColor
-     * @param hNick
+     * @param cm
      */
-    public void TransmitChatMessage(String message, String chatchannel, String player, String hColor, String hNick) {
+    public void TransmitChatMessage(ChatMessage cm) {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF(chatchannel);
-        out.writeUTF(message);
-        out.writeUTF(player);
-        out.writeUTF(hColor);
-        out.writeUTF(hNick);
-        this.plugin.getServer().sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
+        
+        /* Herochat tokens */
+        out.writeUTF(cm.getChannel());
+        out.writeUTF(cm.getMessage());
+        out.writeUTF(cm.getSender());
+        out.writeUTF(cm.getHeroColor());
+        out.writeUTF(cm.getHeroNick());
+        
+        /* Vault tokens */
+        out.writeUTF(cm.getPlayerPrefix());
+        out.writeUTF(cm.getPlayerSuffix());
+        out.writeUTF(cm.getGroupPrefix());
+        out.writeUTF(cm.getGroupSuffix());
+        out.writeUTF(cm.getPlayerGroup());
+        
+        plugin.getServer().sendPluginMessage(plugin, "BungeeChat", out.toByteArray());
     }
 
     /**
