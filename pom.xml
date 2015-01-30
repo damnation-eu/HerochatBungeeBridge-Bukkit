@@ -40,6 +40,24 @@
                     <target>1.7</target>
                 </configuration>
             </plugin>
+            <plugin>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <configuration>
+                            <tasks>                                                                                                              
+                                <exec dir="../${project.name}/target" executable="scp">
+                                    <arg line="HerochatBungeeBridgeBukkit.jar cnaude@h.cnaude.org:spigottest/plugins/"/>
+                                </exec>
+                            </tasks>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>    
         </plugins>
         <finalName>HerochatBungeeBridgeBukkit</finalName>
     </build>
