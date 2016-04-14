@@ -1,7 +1,7 @@
 package com.jumanjicraft.BungeeChatClient;
 
-import com.dthielke.herochat.Channel;
-import com.dthielke.herochat.Herochat;
+import com.dthielke.Herochat;
+import com.dthielke.api.Channel;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;

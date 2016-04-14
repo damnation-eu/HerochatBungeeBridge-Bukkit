@@ -6,7 +6,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Bukkit API Version, change if out dated -->
-        <bukkit.version>1.8.3</bukkit.version>
+        <bukkit.version>1.9.2</bukkit.version>
         <build.number>SNAPSHOT</build.number>
     </properties>
     
@@ -48,7 +48,10 @@
                         <configuration>
                             <tasks>                                                                                                              
                                 <exec dir="../${project.name}/target" executable="scp">
-                                    <arg line="HerochatBungeeBridgeBukkit.jar cnaude@h.cnaude.org:spigottest/plugins/"/>
+                                    <arg line="HerochatBungeeBridgeBukkit.jar cnaude@giraffe.lan:spigottest/plugins/"/>
+                                </exec>
+                                <exec dir="../${project.name}/target" executable="scp">
+                                    <arg line="HerochatBungeeBridgeBukkit.jar cnaude@giraffe.lan:minetest/plugins/"/>
                                 </exec>
                             </tasks>
                         </configuration>
@@ -117,19 +120,7 @@
         <dependency>
             <groupId>com.cnaude.herochat</groupId>
             <artifactId>Herochat</artifactId>
-            <version>5.6.7</version>
-            <!--
-            <exclusions>
-                <exclusion>
-                    <groupId>org.bukkit</groupId>
-                    <artifactId>bukkit</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>net.milkbowl.vault</groupId>
-                    <artifactId>VaultAPI</artifactId>
-                </exclusion>
-            </exclusions>
-            -->
+            <version>5.7.0</version>
         </dependency>
         
         <!-- Vault -->

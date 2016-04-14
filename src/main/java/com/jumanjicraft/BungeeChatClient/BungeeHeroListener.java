@@ -1,6 +1,6 @@
 package com.jumanjicraft.BungeeChatClient;
 
-import com.dthielke.herochat.ChannelChatEvent;
+import com.dthielke.api.event.ChannelChatEvent;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -16,12 +16,12 @@ public class BungeeHeroListener implements Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     public void onChannelChatEvent(ChannelChatEvent event) {
-        Player player = event.getSender().getPlayer();
+        Player player = event.getChatter().getPlayer();
         ChatMessage cm = new ChatMessage();
         
         cm.setMessage(event.getMessage());
         cm.setChannelName(event.getChannel().getName());
-        cm.setSenderName(event.getSender().getName());
+        cm.setSenderName(player.getName());
         cm.setHeroColor(event.getChannel().getColor().toString());
         cm.setHeroNick(event.getChannel().getNick());
         
