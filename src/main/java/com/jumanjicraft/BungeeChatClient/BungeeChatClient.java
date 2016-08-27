@@ -6,26 +6,16 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class BungeeChatClient extends JavaPlugin {
 
-    private String prefixSymbol;
     private BungeeChatListener bungeeChatListener;
     public VaultHook vaultHelpers;
 
     @Override
     public void onEnable() {
-        loadConfig();
         setupVault();
         bungeeChatListener = new BungeeChatListener(this);
         getServer().getPluginManager().registerEvents(new BungeeHeroListener(this), this);
     }
 
-    public void loadConfig() {
-        prefixSymbol = getConfig().getString("prefix-symbol", "");
-    }
-    
-    public String getPrefixSymbol() {
-        return prefixSymbol;
-    }
-    
     public BungeeChatListener getBungeeChatListener() {
         return bungeeChatListener;
     }

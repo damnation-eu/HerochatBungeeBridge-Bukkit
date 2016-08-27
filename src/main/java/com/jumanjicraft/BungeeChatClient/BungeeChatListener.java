@@ -11,6 +11,7 @@ import org.bukkit.plugin.messaging.PluginMessageListener;
 public class BungeeChatListener implements PluginMessageListener {
 
     private final BungeeChatClient plugin;
+    private String lastMessage;
 
     /**
      *
@@ -61,17 +62,47 @@ public class BungeeChatListener implements PluginMessageListener {
         if (!tag.equalsIgnoreCase("BungeeChat")) {
             return;
         }
+
+        /* Herochat tokens */
         ByteArrayDataInput in = ByteStreams.newDataInput(data);
         String chatchannel = in.readUTF();
         String message = in.readUTF();
+        String sender = in.readUTF();
+        String heroColor = in.readUTF();
+        String heroNick = in.readUTF();
+	
+        /* Vault tokens */
+        String prefix = in.readUTF();
+        String suffix = in.readUTF();
+        String groupPrefix = in.readUTF();
+        String groupSuffix = in.readUTF();
+        String group = in.readUTF();
+
+
         Channel channel = Herochat.getChannelManager().getChannel(chatchannel);
         if (channel == null) {
             return;
         }
-        if (plugin.getPrefixSymbol().isEmpty()) {
-            channel.sendRawMessage(message);
-        } else {
-            channel.sendRawMessage(plugin.getPrefixSymbol() + message);
+        String format = channel.getFormatSupplier().getStandardFormat();
+        format = format.replace("{name}", channel.getName());
+        format = format.replace("{nick}", channel.getNick());
+        format = format.replace("{color}", channel.getColor().toString());
+        format = format.replace("{msg}", "%2$s");
+        format = format.replace("{sender}", "%1$s");
+	format = format.replaceAll("(?i)&([a-fklmnor0-9])", "§$1");
+
+        format = format.replace("{plainsender}", sender);
+	format = format.replace("{prefix}", prefix == null ? "" : prefix.replace("%", "%%"));
+        format = format.replace("{suffix}", suffix == null ? "" : suffix.replace("%", "%%"));
+        format = format.replace("{group}", group == null ? "" : group.replace("%", "%%"));
+        format = format.replace("{groupprefix}", groupPrefix == null ? "" : groupPrefix.replace("%", "%%"));
+        format = format.replace("{groupsuffix}", groupSuffix == null ? "" : groupSuffix.replace("%", "%%"));
+        format = format.replace("{world}", "EXT");
+	format = format.replace("%1$s", sender);
+        String formattedMessage = format.replace("%2$s", message);
+        if(!formattedMessage .equals(lastMessage)){
+	    channel.sendRawMessage(formattedMessage);
+            lastMessage = formattedMessage ;
         }
     }
 }
